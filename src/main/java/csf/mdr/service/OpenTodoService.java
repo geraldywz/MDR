@@ -18,15 +18,15 @@ import csf.mdr.model.Book;
 
 import static csf.mdr.util.Constants.*;
 
-@Service(BEAN_BOOK_SERVICE)
-public class OpenLibraryService implements BookService {
+@Service(BEAN_TODO_SERVICE)
+public class OpenTodoService implements TodoService {
 
-    private final Logger logger = LoggerFactory.getLogger(OpenLibraryService.class);
+    private final Logger logger = LoggerFactory.getLogger(OpenTodoService.class);
 
     @Autowired
     private ApiService api;
 
-    public OpenLibraryService() {
+    public OpenTodoService() {
     }
 
     public List<Book> search(String title) {

@@ -8,8 +8,8 @@ public class Constants {
 
     public static String KEY_REDISPASSWORD;
 
-    public static final String BEAN_LIBRARY_SERVICE = "FETCH_BOOK_SERVICE";
-    public static final String BEAN_BOOK_SERVICE = "BOOK_SERVICE";
+    public static final String FETCH_TODO_SERVICE = "FETCH_BOOK_SERVICE";
+    public static final String BEAN_TODO_SERVICE = "TODO_SERVICE";
     public static final String BEAN_TODO_CACHE = "TODO_CACHE";
 
     public static final String DEFAULT_PORT = "8080";

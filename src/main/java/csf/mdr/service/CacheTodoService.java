@@ -11,9 +11,9 @@ import csf.mdr.model.Book;
 import csf.mdr.repositories.TodoRepository;
 
 @Service
-public class CacheBookService {
+public class CacheTodoService {
 
-    private final Logger logger = LoggerFactory.getLogger(CacheBookService.class);
+    private final Logger logger = LoggerFactory.getLogger(CacheTodoService.class);
 
     @Autowired
     private TodoRepository bookRepo;

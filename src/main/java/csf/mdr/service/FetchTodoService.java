@@ -13,17 +13,17 @@ import csf.mdr.model.Book;
 
 import static csf.mdr.util.Constants.*;
 
-@Service(BEAN_LIBRARY_SERVICE)
-public class LibraryService implements BookService {
+@Service(FETCH_TODO_SERVICE)
+public class FetchTodoService implements TodoService {
 
-    private final Logger logger = LoggerFactory.getLogger(LibraryService.class);
-
-    @Autowired
-    @Qualifier(BEAN_BOOK_SERVICE)
-    private OpenLibraryService delegate;
+    private final Logger logger = LoggerFactory.getLogger(FetchTodoService.class);
 
     @Autowired
-    private CacheBookService cache;
+    @Qualifier(BEAN_TODO_SERVICE)
+    private OpenTodoService delegate;
+
+    @Autowired
+    private CacheTodoService cache;
 
     public List<Book> search(String title) {
         return delegate.search(title);

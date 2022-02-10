@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.json.Json;
 import jakarta.json.JsonObjectBuilder;
 import csf.mdr.model.TodoSummary;
-import csf.mdr.service.BookService;
+import csf.mdr.service.TodoService;
 
 import static csf.mdr.util.Constants.*;
 
@@ -26,8 +26,8 @@ import static csf.mdr.util.Constants.*;
 public class TodoRestController {
 
     @Autowired
-    @Qualifier(BEAN_LIBRARY_SERVICE)
-    BookService bookSvc;
+    @Qualifier(FETCH_TODO_SERVICE)
+    TodoService bookSvc;
 
     // private static final Logger logger =
     // LoggerFactory.getLogger(WeatherController.class);

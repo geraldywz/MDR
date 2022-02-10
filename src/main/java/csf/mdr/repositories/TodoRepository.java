@@ -3,7 +3,6 @@ package csf.mdr.repositories;
 import static csf.mdr.util.Constants.*;
 
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,7 +19,7 @@ public class TodoRepository {
     public void save(String key, String value) {
         template
                 .opsForValue()
-                .set(sanitize(key), value, 30L, TimeUnit.MINUTES);
+                .set(sanitize(key), value);
     }
 
     public Optional<String> get(String key) {
