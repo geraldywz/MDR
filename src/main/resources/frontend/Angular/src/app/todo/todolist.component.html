@@ -1,0 +1,10 @@
+<div class="list-group" *ngIf="summary.length > 0">
+  <div *ngFor="let t of summary" class="item">
+    <a
+      [routerLink]="['/todo', t.tid]"
+      class="list-group-item list-group-item-action bg-dark text-white"
+    >
+      {{ t.title }}</a
+    >
+  </div>
+</div>
