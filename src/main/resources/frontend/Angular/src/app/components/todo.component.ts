@@ -51,7 +51,7 @@ export class TodoComponent implements OnInit, OnDestroy, TodoGuard {
   getValue(): Todo {
     const t = this.form.value as Todo;
 
-    if (!!this.todo) t.tid = this.todo.tid;
+    if (!!this.todo) t.id = this.todo.id;
     return t;
   }
 

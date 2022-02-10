@@ -15,7 +15,7 @@ export class TodoService extends Dexie {
   constructor(private http: HttpClient) {
     super('todo-db');
     this.version(1).stores({
-      todo: 'tid',
+      todo: 'id',
     });
 
     this.todo = this.table('todo');
@@ -25,7 +25,7 @@ export class TodoService extends Dexie {
     return this.todo
       .toArray()
       .then((todos) =>
-        todos.map((t) => ({ tid: t.tid, title: t.title } as TodoSummary))
+        todos.map((t) => ({ id: t.id, title: t.title } as TodoSummary))
       );
   }
 
@@ -33,17 +33,20 @@ export class TodoService extends Dexie {
     return this.todo.put(todo);
   }
 
-  deleteTodoById(tid: string): Promise<void> {
-    return this.todo.delete(tid);
+  deleteTodoById(id: string): Promise<void> {
+    return this.todo.delete(id);
   }
 
   addTodo(todo: Todo): Promise<string> {
-    todo.tid = uuidv4().toString().substring(0, 8);
+    todo.id = uuidv4().toString().substring(0, 8);
+    console.log('I am in todo.services!');
+
+    console.log(todo);
     console.log(lastValueFrom(this.http.post<String>(URL_POST_API_TODO, todo)));
     return this.todo.add(todo);
   }
 
-  getTodoById(tid: string): Promise<Todo> {
-    return <Promise<Todo>>this.todo.get(tid);
+  getTodoById(id: string): Promise<Todo> {
+    return <Promise<Todo>>this.todo.get(id);
   }
 }

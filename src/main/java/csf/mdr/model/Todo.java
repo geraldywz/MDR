@@ -2,16 +2,20 @@ package csf.mdr.model;
 
 import java.util.Objects;
 
-public class TodoSummary {
+import jakarta.json.Json;
+
+import jakarta.json.JsonObject;
+
+public class Todo {
     private String id;
     private String title;
     private String description;
     private String priority;
 
-    public TodoSummary() {
+    public Todo() {
     }
 
-    public TodoSummary(String id, String title, String description, String priority) {
+    public Todo(String id, String title, String description, String priority) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -50,34 +54,53 @@ public class TodoSummary {
         this.priority = priority;
     }
 
-    public TodoSummary id(String id) {
+    public Todo id(String id) {
         setId(id);
         return this;
     }
 
-    public TodoSummary title(String title) {
+    public Todo title(String title) {
         setTitle(title);
         return this;
     }
 
-    public TodoSummary description(String description) {
+    public Todo description(String description) {
         setDescription(description);
         return this;
     }
 
-    public TodoSummary priority(String priority) {
+    public Todo priority(String priority) {
         setPriority(priority);
         return this;
+    }
+
+    public JsonObject toJson() {
+        return Json.createObjectBuilder()
+                .add("id", this.id)
+                .add("title", this.title)
+                .add("description", this.description)
+                .add("priority", this.priority)
+                .build();
+    }
+
+    public static Todo toWeather(JsonObject o) {
+        Todo t = new Todo();
+        t.setId(o.getString("id"));
+        t.setTitle(o.getString("title"));
+        t.setDescription(o.getString("description"));
+        t.setPriority(o.getString("priority"));
+
+        return (t);
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof TodoSummary)) {
+        if (!(o instanceof Todo)) {
             return false;
         }
-        TodoSummary todoSummary = (TodoSummary) o;
+        Todo todoSummary = (Todo) o;
         return Objects.equals(id, todoSummary.id) && Objects.equals(title, todoSummary.title)
                 && Objects.equals(description, todoSummary.description)
                 && Objects.equals(priority, todoSummary.priority);

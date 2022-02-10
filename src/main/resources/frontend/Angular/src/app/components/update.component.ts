@@ -14,7 +14,7 @@ export class UpdateComponent implements OnInit, AfterViewInit, TodoGuard {
   @ViewChild(TodoComponent)
   todoComponent!: TodoComponent;
 
-  tid!: string;
+  id!: string;
   todo!: Todo;
 
   valid = false;
@@ -26,11 +26,11 @@ export class UpdateComponent implements OnInit, AfterViewInit, TodoGuard {
   ) {}
 
   ngOnInit(): void {
-    this.tid = this.activatedRoute.snapshot.params['tid'];
+    this.id = this.activatedRoute.snapshot.params['id'];
   }
 
   ngAfterViewInit() {
-    this.todoSvc.getTodoById(this.tid).then((todo) => {
+    this.todoSvc.getTodoById(this.id).then((todo) => {
       this.todo = todo;
       this.todoComponent.resetForm(this.todo);
     });
@@ -49,7 +49,7 @@ export class UpdateComponent implements OnInit, AfterViewInit, TodoGuard {
   }
 
   deleteTodo() {
-    this.todoSvc.deleteTodoById(this.tid).then(this.clearAndGoBack.bind(this));
+    this.todoSvc.deleteTodoById(this.id).then(this.clearAndGoBack.bind(this));
     this.router.navigate(['/']);
   }
 

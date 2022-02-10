@@ -1,5 +1,5 @@
 export interface TodoSummary {
-	tid: string
+	id: string
 	title: string
 }
 

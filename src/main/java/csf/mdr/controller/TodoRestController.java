@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.json.Json;
-import jakarta.json.JsonObjectBuilder;
-import csf.mdr.model.TodoSummary;
-import csf.mdr.service.TodoService;
+import csf.mdr.model.Todo;
+import csf.mdr.service.FetchTodoService;
 
 import static csf.mdr.util.Constants.*;
 
@@ -27,7 +26,7 @@ public class TodoRestController {
 
     @Autowired
     @Qualifier(FETCH_TODO_SERVICE)
-    TodoService bookSvc;
+    FetchTodoService todoFetch;
 
     // private static final Logger logger =
     // LoggerFactory.getLogger(WeatherController.class);
@@ -54,37 +53,13 @@ public class TodoRestController {
         } else {
             return ResponseEntity
                     .ok()
-                    .body(bookSvc.search(title).toString());
+                    .body(todoFetch.search(title).toString());
         }
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> ingestJson(@RequestBody TodoSummary tds) {
-
-        System.out.printf(tds.getTitle());
-
-        String name = "Roland";
-        String email = "Queef";
-
-        System.out.printf("name: %s, email: %s\n", name, email);
-
-        JsonObjectBuilder payload = Json.createObjectBuilder();
-
-        if (name.trim().toLowerCase().startsWith("justin")) {
-            payload.add("message",
-                    "Unfortunately for you, your name begins with Justin");
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .body(payload.build().toString());
-        }
-
-        payload.add("message",
-                "%s, you have been registered".formatted(name));
-        return ResponseEntity
-                .status(HttpStatus.ACCEPTED)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(payload.build().toString());
+    public void saveTodo(@RequestBody Todo todo) {
+        todoFetch.saveTodo(todo);
     }
 
 }

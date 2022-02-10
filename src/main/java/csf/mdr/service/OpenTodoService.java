@@ -19,7 +19,7 @@ import csf.mdr.model.Book;
 import static csf.mdr.util.Constants.*;
 
 @Service(BEAN_TODO_SERVICE)
-public class OpenTodoService implements TodoService {
+public class OpenTodoService {
 
     private final Logger logger = LoggerFactory.getLogger(OpenTodoService.class);
 
@@ -36,7 +36,7 @@ public class OpenTodoService implements TodoService {
                 .queryParam("q", title.trim().replace(" ", "+"))
                 .queryParam("limit", "20")
                 .toUriString();
-                logger.info(url);
+        logger.info(url);
 
         final JsonObject jsonObject = api.getJsonObject(url);
         final JsonArray docs = jsonObject.getJsonArray("docs");
