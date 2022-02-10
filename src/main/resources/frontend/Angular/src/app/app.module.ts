@@ -1,27 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { TodoComponent } from './todo/todo.component';
-import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { UpdateComponent } from './components/update.component';
+import { TodoComponent } from './components/todo.component';
 import { TodoService } from './services/todo.service';
-import { TodolistComponent } from './todo/todolist.component';
-import { TodoMainComponent } from './todo/todo-main.component';
 import { TodoGuardService } from './services/todo-guard.service';
+import { CloudComponent } from './components/cloud.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NavComponent } from './nav/nav.component';
+import { TodolistComponent } from './components/todolist.component';
+import { NewComponent } from './components/new.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
+    UpdateComponent,
     TodoComponent,
-    CartComponent,
+    CloudComponent,
+    NavComponent,
     TodolistComponent,
-    TodoMainComponent,
+    NewComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [TodoService, TodoGuardService],
   bootstrap: [AppComponent],
 })

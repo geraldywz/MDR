@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Todo, TodoGuard } from '../models';
 import { TodoService } from '../services/todo.service';
 import { TodoComponent } from './todo.component';
@@ -20,7 +20,8 @@ export class TodoMainComponent implements OnInit, AfterViewInit, TodoGuard {
 
   constructor(
     private todoSvc: TodoService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-todolist></app-todolist>
+    </div>
+    <div class="col-10">
+      <app-todo [todo]="todo" (valid)="formValidity($event)">
+        <div class="justify-right">
+          <button
+            type="button"
+            class="btn btn-warning"
+            [disabled]="!valid"
+            (click)="updateTodo()"
+          >
+            Update
+          </button>
+          <button type="button" class="btn btn-danger" (click)="deleteTodo()">
+            Delete
+          </button>
+        </div>
+      </app-todo>
+    </div>
+  </div>
+</div>

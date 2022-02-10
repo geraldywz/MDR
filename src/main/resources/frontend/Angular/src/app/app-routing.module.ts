@@ -1,29 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
+import { CloudComponent } from './components/cloud.component';
+import { NewComponent } from './components/new.component';
+import { UpdateComponent } from './components/update.component';
 import { TodoGuardService } from './services/todo-guard.service';
-import { TodoMainComponent } from './todo/todo-main.component';
-import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/todo', pathMatch: 'full' },
+  { path: '', component: NewComponent },
   {
-    path: 'todo',
-    component: TodoMainComponent,
+    path: 'todo/:tid',
+    component: UpdateComponent,
     canDeactivate: [TodoGuardService],
   },
   {
-    path: 'todo/:id',
-    component: TodoMainComponent,
+    path: 'new',
+    component: NewComponent,
     canDeactivate: [TodoGuardService],
   },
-  { path: 'cart', component: CartComponent },
-  {
-    path: 'heroes',
-    component: TodoComponent,
-    data: { title: 'Heroes List' },
-  },
-  { path: '**', redirectTo: '/todo', pathMatch: 'full' },
+  { path: 'cloud', component: CloudComponent },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({

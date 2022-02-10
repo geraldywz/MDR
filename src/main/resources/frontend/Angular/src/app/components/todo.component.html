@@ -1,0 +1,36 @@
+<form class="row g-2" [formGroup]="form">
+  <div class="form-floating">
+    <input
+      type="text"
+      class="form-control bg-dark text-white"
+      id="title"
+      formControlName="title"
+      placeholder="What will you do?"
+    />
+    <label for="title" class="text-warning">Title</label>
+  </div>
+  <div class="form-floating">
+    <select
+      class="form-select bg-dark text-white"
+      id="priority"
+      aria-label="Floating label select example"
+      formControlName="priority"
+    >
+      <option value="low">Low</option>
+      <option value="med">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <label for="priority" class="text-warning">Priority</label>
+  </div>
+  <div class="form-floating">
+    <textarea
+      class="form-control bg-dark text-white"
+      id="description"
+      style="height: 150px"
+      formControlName="description"
+      placeholder="Describe your task."
+    ></textarea>
+    <label for="description" class="text-warning">Description</label>
+  </div>
+</form>
+<ng-content></ng-content>
