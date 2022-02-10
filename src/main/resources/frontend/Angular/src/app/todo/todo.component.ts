@@ -17,18 +17,19 @@ export class TodoComponent implements OnInit {
 
   form!: FormGroup;
   sub$!: Subscription;
-  formIsValid: boolean = false;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.resetForm();
+    this.resetForm(this.todo);
   }
   ngOnDestroy() {
     this.sub$.unsubscribe();
   }
 
   resetForm(t: Partial<Todo> = {}) {
+    this.sub$?.unsubscribe();
+
     this.form = this.fb.group({
       title: this.fb.control(t.title || '', [
         Validators.required,
@@ -40,24 +41,22 @@ export class TodoComponent implements OnInit {
       ]),
       priority: this.fb.control(t.priority || 'low'),
     });
-    this.sub$ = this.form.statusChanges.subscribe((s) =>
-      this.valid.next(s.toLowerCase() == 'valid')
-    );
+
+    this.sub$ = this.form.statusChanges.subscribe((s) => {
+      console.info('>>> s: ', s);
+      this.valid.next(s.toLowerCase() == 'valid');
+    });
   }
 
   getValue(): Todo {
     const t = this.form.value as Todo;
+    console.log(this.form.value);
+
     if (!!this.todo) t.tid = this.todo.tid;
     return t;
   }
 
-  addTodo() {
-    const todo = this.getValue();
-  }
-
-  ngAfterViewInit() {}
-
-  formValidity(v: boolean) {
-    this.formIsValid = v;
+  evaluate() {
+    return !(this.form.dirty && this.form.valid);
   }
 }

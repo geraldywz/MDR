@@ -57,8 +57,16 @@ export class TodoService extends Dexie {
     return this.todo.put(todo);
   }
 
+  deleteTodoById(tid: string): Promise<void> {
+    return this.todo.delete(tid);
+  }
+
   addTodo(todo: Todo): Promise<string> {
     todo.tid = uuidv4().toString().substring(0, 8);
     return this.todo.add(todo);
+  }
+
+  getTodoById(tid: string): Promise<Todo> {
+    return <Promise<Todo>>this.todo.get(tid);
   }
 }
