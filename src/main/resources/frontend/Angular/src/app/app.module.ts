@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from './services/todo.service';
 import { TodolistComponent } from './todo/todolist.component';
 import { TodoMainComponent } from './todo/todo-main.component';
+import { TodoGuardService } from './services/todo-guard.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { TodoMainComponent } from './todo/todo-main.component';
     TodoMainComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [TodoService],
+  providers: [TodoService, TodoGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

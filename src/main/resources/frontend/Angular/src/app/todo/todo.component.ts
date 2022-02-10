@@ -22,6 +22,9 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm(this.todo);
+    console.log('todo');
+    console.log(this.todo);
+
   }
   ngOnDestroy() {
     this.sub$.unsubscribe();

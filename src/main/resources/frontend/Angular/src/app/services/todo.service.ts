@@ -21,7 +21,6 @@ export class TodoService extends Dexie {
     let summary: TodoSummary[] = [];
     this.getTodoSummary().then((t) => {
       summary = t;
-      console.info(summary);
       if (summary.length <= 0) {
         this.addTodo({
           title: 'Walk the dog',

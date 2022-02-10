@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Todo } from '../models';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Todo, TodoGuard } from '../models';
 import { TodoService } from '../services/todo.service';
 import { TodoComponent } from './todo.component';
 
@@ -9,7 +9,7 @@ import { TodoComponent } from './todo.component';
   templateUrl: './todo-main.component.html',
   styleUrls: ['./todo-main.component.css'],
 })
-export class TodoMainComponent implements OnInit {
+export class TodoMainComponent implements OnInit, AfterViewInit, TodoGuard {
   @ViewChild(TodoComponent)
   todoComponent!: TodoComponent;
 
@@ -20,12 +20,13 @@ export class TodoMainComponent implements OnInit {
 
   constructor(
     private todoSvc: TodoService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.tid = this.activatedRoute.snapshot.params['tid'];
+    console.log('todo-main');
+    console.log(this.tid);
   }
 
   ngAfterViewInit() {
@@ -43,7 +44,6 @@ export class TodoMainComponent implements OnInit {
     const t = this.todoComponent.getValue();
     this.todoSvc.updateTodo(t).then(() => {
       this.todoComponent.resetForm();
-      this.back();
     });
   }
 
@@ -53,11 +53,6 @@ export class TodoMainComponent implements OnInit {
 
   clearAndGoBack() {
     this.todoComponent.resetForm();
-    this.back();
-  }
-
-  back() {
-    this.router.navigate(['/']);
   }
 
   evaluate() {
