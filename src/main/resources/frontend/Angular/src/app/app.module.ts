@@ -7,23 +7,28 @@ import { UpdateComponent } from './components/update.component';
 import { TodoComponent } from './components/todo.component';
 import { TodoService } from './services/todo.service';
 import { TodoGuardService } from './services/todo-guard.service';
-import { CloudComponent } from './components/cloud.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './nav/nav.component';
 import { TodolistComponent } from './components/todolist.component';
 import { NewComponent } from './components/new.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     UpdateComponent,
     TodoComponent,
-    CloudComponent,
     NavComponent,
     TodolistComponent,
     NewComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [TodoService, TodoGuardService],
   bootstrap: [AppComponent],
 })

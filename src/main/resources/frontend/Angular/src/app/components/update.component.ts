@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Todo, TodoGuard } from '../models';
 import { TodoService } from '../services/todo.service';
+
 import { TodoComponent } from './todo.component';
 
 @Component({
@@ -26,7 +27,6 @@ export class UpdateComponent implements OnInit, AfterViewInit, TodoGuard {
 
   ngOnInit(): void {
     this.tid = this.activatedRoute.snapshot.params['tid'];
-    console.log(this.tid);
   }
 
   ngAfterViewInit() {

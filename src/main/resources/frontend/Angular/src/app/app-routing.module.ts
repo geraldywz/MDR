@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CloudComponent } from './components/cloud.component';
 import { NewComponent } from './components/new.component';
 import { UpdateComponent } from './components/update.component';
 import { TodoGuardService } from './services/todo-guard.service';
@@ -17,8 +16,6 @@ const routes: Routes = [
     component: UpdateComponent,
     canDeactivate: [TodoGuardService],
   },
-
-  { path: 'cloud', component: CloudComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 

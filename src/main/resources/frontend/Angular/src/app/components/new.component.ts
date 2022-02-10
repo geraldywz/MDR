@@ -21,6 +21,9 @@ export class NewComponent implements OnInit, TodoGuard {
 
   addTodo() {
     const todo = this.todoComponent.getValue();
+    console.log('I am in New.Component!');
+    console.log(todo);
+
     this.todoSvc.addTodo(todo).then(() => {
       this.todoComponent.resetForm();
       this.router.navigate(['/']);
