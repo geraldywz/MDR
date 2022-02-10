@@ -10,7 +10,7 @@ public class Constants {
 
     public static final String BEAN_LIBRARY_SERVICE = "FETCH_BOOK_SERVICE";
     public static final String BEAN_BOOK_SERVICE = "BOOK_SERVICE";
-    public static final String BEAN_BOOK_CACHE = "BOOK_CACHE";
+    public static final String BEAN_TODO_CACHE = "TODO_CACHE";
 
     public static final String DEFAULT_PORT = "8080";
 

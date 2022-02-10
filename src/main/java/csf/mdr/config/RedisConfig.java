@@ -39,7 +39,7 @@ public class RedisConfig {
         logger.info("REDIS PW >>>>> " + redisPassword);
     }
 
-    @Bean(BEAN_BOOK_CACHE)
+    @Bean(BEAN_TODO_CACHE)
     public RedisTemplate<String, String> redisTemplateFactory() {
 
         final RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();

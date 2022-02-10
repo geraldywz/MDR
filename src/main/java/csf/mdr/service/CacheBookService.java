@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import csf.mdr.model.Book;
-import csf.mdr.repositories.BookRepository;
+import csf.mdr.repositories.TodoRepository;
 
 @Service
 public class CacheBookService {
@@ -16,7 +16,7 @@ public class CacheBookService {
     private final Logger logger = LoggerFactory.getLogger(CacheBookService.class);
 
     @Autowired
-    private BookRepository bookRepo;
+    private TodoRepository bookRepo;
 
     public void save(Book b) {
         bookRepo.save(b.getKey(), b.toJson().toString());
