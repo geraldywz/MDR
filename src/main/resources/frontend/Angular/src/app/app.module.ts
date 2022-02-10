@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { UpdateComponent } from './components/update.component';
@@ -22,7 +21,7 @@ import { NewComponent } from './components/new.component';
     CloudComponent,
     NavComponent,
     TodolistComponent,
-    NewComponent
+    NewComponent,
   ],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [TodoService, TodoGuardService],

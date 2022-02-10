@@ -2,6 +2,7 @@
   <div *ngFor="let t of summary" class="item">
     <a
       [routerLink]="['/todo', t.tid]"
+      target="_blank"
       class="list-group-item list-group-item-action bg-dark text-white"
     >
       {{ t.title }}</a

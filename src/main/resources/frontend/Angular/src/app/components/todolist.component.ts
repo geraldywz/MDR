@@ -14,5 +14,7 @@ export class TodolistComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoSvc.getTodoSummary().then((t) => (this.summary = t));
+    console.log('NgInit');
+
   }
 }
