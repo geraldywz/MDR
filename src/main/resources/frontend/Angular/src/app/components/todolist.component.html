@@ -2,8 +2,9 @@
   <div *ngFor="let t of summary" class="item">
     <a
       [routerLink]="['/todo', t.tid]"
-      target="_blank"
+      target="_top"
       class="list-group-item list-group-item-action bg-dark text-white"
+      (click)="reload()"
     >
       {{ t.title }}</a
     >

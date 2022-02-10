@@ -50,6 +50,7 @@ export class UpdateComponent implements OnInit, AfterViewInit, TodoGuard {
 
   deleteTodo() {
     this.todoSvc.deleteTodoById(this.tid).then(this.clearAndGoBack.bind(this));
+    this.router.navigate(['/']);
   }
 
   clearAndGoBack() {

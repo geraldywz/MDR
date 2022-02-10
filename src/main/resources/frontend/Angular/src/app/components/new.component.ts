@@ -1,39 +1,37 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import {Router} from '@angular/router';
-import {TodoGuard} from '../models';
-import {TodoService} from '../services/todo.service';
-import {TodoComponent} from './todo.component';
+import { Router } from '@angular/router';
+import { TodoGuard } from '../models';
+import { TodoService } from '../services/todo.service';
+import { TodoComponent } from './todo.component';
 
 @Component({
   selector: 'app-add',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  styleUrls: ['./new.component.css'],
 })
 export class NewComponent implements OnInit, TodoGuard {
+  @ViewChild(TodoComponent)
+  todoComponent!: TodoComponent;
 
-	@ViewChild(TodoComponent)
-	todoComponent!: TodoComponent
+  valid = false;
 
-	valid = false
+  constructor(private todoSvc: TodoService, private router: Router) {}
 
-	constructor(private todoSvc: TodoService, private router: Router) { }
+  ngOnInit(): void {}
 
-	ngOnInit(): void { }
+  addTodo() {
+    const todo = this.todoComponent.getValue();
+    this.todoSvc.addTodo(todo).then(() => {
+      this.todoComponent.resetForm();
+      this.router.navigate(['/']);
+    });
+  }
 
-	addTodo() {
-		const todo = this.todoComponent.getValue()
-		this.todoSvc.addTodo(todo)
-			.then(() => {
-				this.todoComponent.resetForm()
-				this.router.navigate(['/'])
-			})
-	}
+  evaluate() {
+    return this.todoComponent.evaluate();
+  }
 
-	evaluate() {
-		return this.todoComponent.evaluate()
-	}
-
-	formValidity(v: boolean) {
-		this.valid = v;
-	}
+  formValidity(v: boolean) {
+    this.valid = v;
+  }
 }

@@ -6,7 +6,7 @@ import { UpdateComponent } from './components/update.component';
 import { TodoGuardService } from './services/todo-guard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'new', pathMatch: 'full' },
+  { path: '', component: NewComponent },
   {
     path: 'new',
     component: NewComponent,
@@ -23,7 +23,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
